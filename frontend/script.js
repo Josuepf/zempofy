@@ -434,7 +434,7 @@ function excluirTarefaAgenda(data, index) {
 
 async function salvarDados() {
   try {
-    const resposta = await fetch('/api/tarefas', {
+    const resposta = await fetch('https://zempofy-backend.onrender.com/api/tarefas', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(dados)
@@ -449,13 +449,10 @@ async function salvarDados() {
 }
 
 async function carregarDados() {
-  const res = await fetch('/api/tarefas');
+  const res = await fetch('https://zempofy-backend.onrender.com/api/tarefas');
   const json = await res.json();
   dados = json;
 }
-
-let mesAtual = new Date();
-
 
 function carregarAgenda() {
   const c = document.getElementById('conteudo');
