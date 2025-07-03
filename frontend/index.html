@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sistema de Rotina Empresarial</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+  <!-- Tela inicial de login -->
+  <div id="tela-login" class="tela-centralizada">
+    <h1>Bem-vindo</h1>
+    <p>Como deseja acessar o sistema?</p>
+    <div class="botoes-login">
+      <button onclick="entrarComo('admin')">Administrador</button>
+      <button onclick="entrarComo('funcionario')">Funcionário</button>
+    </div>
+  </div>
+
+  <!-- Aplicação principal -->
+  <div id="app" style="display: none">
+    <!-- Barra lateral -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-top">
+        <h2 class="logo">Rotina</h2>
+        <button class="toggle-sidebar" onclick="alternarSidebar()">❮</button>
+      </div>
+      <nav id="menu" class="menu-lateral"></nav>
+    </aside>
+
+    <!-- Conteúdo principal -->
+    <main id="conteudo" class="conteudo-principal"></main>
+  </div>
+
+  <!-- Modais reutilizáveis -->
+  <div id="modal-overlay" class="modal-overlay" style="display: none">
+    <div id="modal-box" class="modal-box">
+      <h3 id="modal-titulo"></h3>
+      <p id="modal-texto"></p>
+      <div class="modal-botoes">
+        <button onclick="fecharModal()">Cancelar</button>
+        <button id="modal-confirmar" class="botao-verde">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup de novo local (único) -->
+  <div id="popup-novo-local" class="popup-confirmar" style="display: none;">
+    <div class="popup-caixa">
+      <h3 style="color: #1b3d2f;">Adicionar novo local</h3>
+      <input type="text" id="popupNovoLocal" placeholder="Digite o nome do local">
+      <div class="popup-botoes">
+        <button onclick="fecharNovoLocal()">Cancelar</button>
+        <button onclick="salvarNovoLocal()" class="botao-verde">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup de adicionar tarefa na agenda -->
+<div id="popup-agenda" class="popup-confirmar" style="display: none;">
+  <div class="popup-caixa">
+    <h3 style="color: #1b3d2f;">Nova tarefa</h3>
+    <input type="text" id="inputTarefaAgenda" placeholder="Descrição da tarefa">
+    <label for="inputHoraAgenda" style="display:block; text-align:left;">Hora</label>
+<input type="time" id="inputHoraAgenda">
+
+<label for="inputCorAgenda" style="display:block; margin-top:10px; text-align:left;">Cor</label>
+<select id="inputCorAgenda">
+  <option value="#4CAF50">Verde</option>
+  <option value="#2196F3">Azul</option>
+  <option value="#FF9800">Laranja</option>
+  <option value="#b71c1c">Vermelho Escuro</option>
+</select>
+
+    
+    <div class="popup-botoes">
+      <button onclick="fecharPopupAgenda()">Cancelar</button>
+      <button onclick="salvarTarefaAgenda()" class="botao-verde">Salvar</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Popup de anotação -->
+<div id="popup-anotacao" class="popup-confirmar" style="display: none;">
+  <div class="popup-caixa">
+    <h3 style="color: #1b3d2f;">Nova Anotação</h3>
+    <input type="text" id="inputTituloAnotacao" placeholder="Título">
+    <div class="caixa-anotacao-input">
+      <textarea id="inputTextoAnotacao" placeholder="Escreva sua anotação..."></textarea>
+    </div>    
+    <div class="popup-botoes">
+      <button onclick="fecharPopupAnotacao()">Cancelar</button>
+      <button onclick="salvarAnotacao()" class="botao-verde">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Popup de visualização da anotação -->
+<div id="popup-ver-anotacao" class="popup-confirmar" style="display: none;">
+  <div class="popup-caixa">
+    <h3 style="color: #1b3d2f;"><span id="tituloVerAnotacao"></span></h3>
+    <div class="caixa-anotacao-input">
+      <div id="textoVerAnotacao" class="leitura-anotacao"></div>
+    </div>
+    <div class="popup-botoes">
+      <button onclick="fecharPopupVerAnotacao()">Fechar</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>
