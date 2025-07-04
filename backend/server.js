@@ -6,6 +6,9 @@ const PORT = process.env.PORT || 3000;
 
 const DATA_FILE = path.join(__dirname, 'data.json');
 
+const cors = require('cors');
+app.use(cors());
+
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../frontend')));
 
